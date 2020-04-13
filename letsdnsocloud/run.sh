@@ -32,7 +32,7 @@ if [ -z "$AID" ]
   then
     createarecord
   else
-    updateip $IP
+    updateip $IP && updateip2 $IP
 fi
 
 # Register/generate certificate if terms accepted
