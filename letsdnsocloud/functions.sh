@@ -43,8 +43,8 @@ function updateip() {
     -H "X-Auth-Email: $CF_EMAIL"\
     -H "X-Auth-Key: $CF_APIKEY"\
     -H "Content-Type: application/json"\
-    --data '{"type":"A","name":"'$LE_DOMAINS'","content":"'$1'","proxied":false}' -o /dev/null
+    --data '{"type":"A","name":"'$BASEDOMAIN'","content":"'$1'","proxied":false}' -o /dev/null
 
-  echo "Updated $LE_DOMAINS with IP: $1"
+  echo "Updated $BASEDOMAIN with IP: $1"
 
 }
