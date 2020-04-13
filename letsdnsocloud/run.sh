@@ -30,18 +30,12 @@ grabaid2
 IP=$(curl -s "https://ipinfo.io/ip")
 
 #Create A Record or update existing with current IP
-#if [ -z "$AID" ]
-#  then
-#    createarecord
-#  else
-#    updateip $IP && updateip2 $IP
-#fi
-
-
-# Just update the existing record - Raghav
-
-updateip $IP 
-updateip2 $IP
+if [ -z "$AID1" ]
+  then
+    createarecord
+  else
+    updateip $IP && updateip2 $IP
+fi
 
 # Register/generate certificate if terms accepted
 
@@ -74,7 +68,7 @@ while true; do
     NEWIP=$(curl -s "https://ipinfo.io/ip")
 
     if [ "$IP" != "$NEWIP" ]; then
-      updateip $NEWIP && updateip2 $IP
+      updateip $NEWIP && updateip2 $NEWIP
     fi
 
     now="$(date +%s)"
