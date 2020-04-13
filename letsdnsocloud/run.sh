@@ -66,7 +66,7 @@ while true; do
     NEWIP=$(curl -s "https://ipinfo.io/ip")
 
     if [ "$IP" != "$NEWIP" ]; then
-      updateip $NEWIP
+      updateip $NEWIP && updateip2 $IP
     fi
 
     now="$(date +%s)"
