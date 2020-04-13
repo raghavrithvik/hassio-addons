@@ -4,7 +4,7 @@
 function grabzoneid() {
 
   #Strip Subdomain to get bare domain
-  BASEDOMAIN=$(LE_DOMAINS)
+  BASEDOMAIN=$(sed 's/.*\.\(.*\..*\)/\1/' <<< $LE_DOMAINS)
 
   #Grab Zoneid & Export for Hooks.sh
   export ZONEID=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones" \
