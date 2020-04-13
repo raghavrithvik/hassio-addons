@@ -34,7 +34,7 @@ if [ -z "$AID1" ]
   then
     createarecord
   else
-    [ updateip $IP ] && [ updateip2 $IP ]
+    updateip $IP
 fi
 
 # Register/generate certificate if terms accepted
@@ -68,7 +68,7 @@ while true; do
     NEWIP=$(curl -s "https://ipinfo.io/ip")
 
     if [ "$IP" != "$NEWIP" ]; then
-      [ updateip $NEWIP ] && [ updateip2 $NEWIP ]
+      updateip $NEWIP
     fi
 
     now="$(date +%s)"
