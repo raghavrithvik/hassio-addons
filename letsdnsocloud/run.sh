@@ -21,8 +21,10 @@ WAIT_TIME=$(jq --raw-output '.seconds' $CONFIG_PATH)
 
 #Extract Zone ID for Domain
 grabzoneid
-#Exract A record ID if one exists already
-grabaid
+#Exract A record ID 1 if one exists already
+grabaid1
+#Exract A record ID 2 if one exists already
+grabaid2
 
 #Grab current ip
 IP=$(curl -s "https://ipinfo.io/ip")
