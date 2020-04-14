@@ -23,13 +23,13 @@ WAIT_TIME=$(jq --raw-output '.seconds' $CONFIG_PATH)
 #Extract Zone ID for Domain
 grabzoneid
 #Exract A record ID 1 if one exists already
-grabaid1
+grabaid
 
 #Grab current ip
 IP=$(curl -s "https://ipinfo.io/ip")
 
 #Create A Record or update existing with current IP
-if [ -z "$AID1" ]
+if [ -z "$AID" ]
   then
     createarecord
   else
