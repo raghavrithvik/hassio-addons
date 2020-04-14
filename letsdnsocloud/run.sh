@@ -9,6 +9,7 @@ CONFIG_PATH=/data/options.json
 # Let's encrypt Deets
 LE_TERMS=$(jq --raw-output '.lets_encrypt.accept_terms' $CONFIG_PATH)
 LE_DOMAINS=$(jq --raw-output '.domains[]' $CONFIG_PATH)
+BASEDOMAIN=$(jq --raw-output '.basedomain[]' $CONFIG_PATH)
 LE_UPDATE="0"
 
 #CloudFlare Deets
@@ -21,14 +22,14 @@ WAIT_TIME=$(jq --raw-output '.seconds' $CONFIG_PATH)
 
 #Extract Zone ID for Domain
 grabzoneid
-#Exract A record ID if one exists already
-grabaid
+#Exract A record ID 1 if one exists already
+grabaid1
 
 #Grab current ip
 IP=$(curl -s "https://ipinfo.io/ip")
 
 #Create A Record or update existing with current IP
-if [ -z "$AID" ]
+if [ -z "$AID1" ]
   then
     createarecord
   else
@@ -66,7 +67,7 @@ while true; do
     NEWIP=$(curl -s "https://ipinfo.io/ip")
 
     if [ "$IP" != "$NEWIP" ]; then
-      updateip $NEWIP
+      updatenewip $NEWIP
     fi
 
     now="$(date +%s)"
