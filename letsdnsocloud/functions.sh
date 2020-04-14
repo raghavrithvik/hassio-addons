@@ -14,9 +14,9 @@ function grabzoneid() {
 }
 
 #Grab id 1 from existing A record
-function grabaid1() {
+function grabaid() {
 
-  AID1=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones/$ZONEID/dns_records" \
+  AID=$(curl -sX GET "https://api.cloudflare.com/client/v4/zones/$ZONEID/dns_records" \
     -H "X-Auth-Email: $CF_EMAIL"\
     -H "X-Auth-Key: $CF_APIKEY"\
     -H "Content-Type: application/json" | jq -r '.result[] | (select(.name | contains("'$BASEDOMAIN'"))) | (select (.type | contains("A"))) | .id')
@@ -39,7 +39,7 @@ echo "A record created for $LE_DOMAINS at $IP"
 #Update A record IP address
 function updateip() {
 
-  curl -sX PUT "https://api.cloudflare.com/client/v4/zones/$ZONEID/dns_records/$AID1"\
+  curl -sX PUT "https://api.cloudflare.com/client/v4/zones/$ZONEID/dns_records/$AID"\
     -H "X-Auth-Email: $CF_EMAIL"\
     -H "X-Auth-Key: $CF_APIKEY"\
     -H "Content-Type: application/json"\
