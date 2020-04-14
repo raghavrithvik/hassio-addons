@@ -1,6 +1,6 @@
 {
 	"name": "letsdnsocloud",
-	"version": "1.2",
+	"version": "1.4.6",
 	"slug": "letsdnsocloud",
 	"description": "Custom Domain with Cloudflare DNS hosting, DDNS and Let's Encrypt (DNS Challenge)",
 	"url": "https://github.com/PhrantiK/hassio-addons",
@@ -16,7 +16,8 @@
 		},
 		"cfapikey": "CloudFlare API Key",
 		"cfemail": "CloudFlare Email",
-		"domains": ["sub.example.com"],
+        "domains": ["sub.example.com"],
+        "basedomain": ["example.com"],
 		"seconds": 300
 	},
 	"schema": {
@@ -27,7 +28,8 @@
 		},
 		"cfapikey": "str",
 		"cfemail": "email",
-		"domains": ["str"],
+        "domains": ["str"],
+        "basedomain": ["str"],
 		"seconds": "int"
 	}
 }
