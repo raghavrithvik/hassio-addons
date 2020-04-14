@@ -9,7 +9,6 @@ CONFIG_PATH=/data/options.json
 # Let's encrypt Deets
 LE_TERMS=$(jq --raw-output '.lets_encrypt.accept_terms' $CONFIG_PATH)
 LE_DOMAINS=$(jq --raw-output '.domains[]' $CONFIG_PATH)
-BASEDOMAIN=$(jq --raw-output '.basedomain[]' $CONFIG_PATH)
 LE_UPDATE="0"
 
 #CloudFlare Deets
@@ -22,7 +21,7 @@ WAIT_TIME=$(jq --raw-output '.seconds' $CONFIG_PATH)
 
 #Extract Zone ID for Domain
 grabzoneid
-#Exract A record ID 1 if one exists already
+#Exract A record ID if one exists already
 grabaid
 
 #Grab current ip
